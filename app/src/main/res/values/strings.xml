@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Automacorp</string>
+    <string name="app_logo_description">automacorp logo</string>
+    <string name="act_main_welcome">Welcome on automacorp,
+ the app to manage building windows</string>
+    <string name="act_main_open">Open</string>
+    <string name="act_main_fill_name">Fill a name</string>
+    <string name="title_activity_room">RoomActivity</string>
+    <string name="act_room_name">Room name</string>
+    <string name="act_room_none">No round found for this id or name</string>
+    <string name="act_room_current_temperature">Current temperature</string>
+    <string name="act_room_target_temperature">Target temperature</string>
+    <string name="app_go_back_description">Go back</string>
+    <string name="app_go_room_description">Rooms</string>
+    <string name="app_go_github_description">Github</string>
+    <string name="app_go_mail_description">Send email</string>
+    <string name="title_activity_automacorp_menu">AutomacorpMenu</string>
+    <string name="title_activity_room_list">RoomListActivity</string>
+    <string name="title_activity_room_detail">RoomDetailActivity</string>
+
+</resources>
