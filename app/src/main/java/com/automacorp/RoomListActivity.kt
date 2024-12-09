@@ -166,12 +166,12 @@ fun RoomItem(
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "Target temperature : " + (room.targetTemperature?.toString() ?: "?") + "°",
+                    text = "Target temperature: ${room.targetTemperature?.let { String.format("%.1f", it) } ?: "N/A"}°",
                     style = MaterialTheme.typography.bodySmall
                 )
             }
             Text(
-                text = (room.currentTemperature?.toString() ?: "?") + "°",
+                text = "${room.currentTemperature?.let { String.format("%.1f", it) } ?: "N/A"}°",
                 style = MaterialTheme.typography.headlineLarge,
             )
             IconButton(onClick = { onUpdate(room.id) }) {
