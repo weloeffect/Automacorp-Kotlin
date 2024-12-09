@@ -14,24 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.activity.viewModels
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import kotlinx.coroutines.flow.StateFlow
 import com.automacorp.model.RoomDto
 import com.automacorp.model.RoomViewModel
-import com.automacorp.model.WindowDto
-import com.automacorp.model.WindowStatus
 import com.automacorp.ui.theme.AutomacorpTheme
 import android.widget.Toast
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Slider
+import com.automacorp.model.WindowStatus
 
 class RoomDetailActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
