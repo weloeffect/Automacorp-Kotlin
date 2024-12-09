@@ -193,37 +193,14 @@ fun RoomDetail(
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
                 room.windows.forEach { window ->
-                    WindowItem(
-                        window = window,
-                        onStatusChange = { newStatus ->
-                            onWindowStatusChange(window.id, newStatus)
-                        }
+                    Text(
+                        text = window.name,  // Display only the window name
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(vertical = 4.dp)  // Add some spacing
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun WindowItem(
-    window: WindowDto,
-    onStatusChange: (WindowStatus) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(window.name)
-        Switch(
-            checked = window.windowStatus == WindowStatus.OPENED,
-            onCheckedChange = { isChecked ->
-                onStatusChange(if (isChecked) WindowStatus.OPENED else WindowStatus.CLOSED)
-            }
-        )
     }
 }
 

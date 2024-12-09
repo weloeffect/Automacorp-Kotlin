@@ -3,7 +3,9 @@
    <string name="app_name">Automacorp</string>
 
    <!-- Main Activity -->
-   <string name="act_main_welcome">Welcome to Automacorp</string>
+   <string name="act_main_description">Welcome to Automacorp</string>
+   <string name="act_main_welcome">Welcome on automacorp,
+ the app to manage building windows</string>
    <string name="act_main_fill_name">Enter your name</string>
    <string name="act_main_open">Open</string>
 
