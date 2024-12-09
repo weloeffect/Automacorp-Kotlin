@@ -29,4 +29,7 @@ interface RoomsApiService {
 
     @PUT("windows/{windowId}")
     fun updateWindowStatus(@Path("windowId") windowId: Long, @Body command: WindowCommandDto): Call<WindowDto>
+
+    @GET("rooms/name/{name}")
+    fun findByName(@Path("name") name: String): Call<RoomDto>
 }

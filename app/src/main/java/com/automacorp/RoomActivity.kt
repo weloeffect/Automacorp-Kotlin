@@ -52,14 +52,11 @@ class RoomActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val param = intent.getStringExtra(MainActivity.ROOM_PARAM)
+        val roomId = intent.getLongExtra(MainActivity.ROOM_PARAM, -1)
         val viewModel: RoomViewModel by viewModels()
 
-        // Find room by name or ID when activity starts
-        param?.let {
-            RoomService.findByNameOrId(it)?.let { room ->
-                viewModel.findRoom(room.id)
-            }
+        if (roomId != -1L) {
+            viewModel.findRoom(roomId)
         }
 
         val onRoomSave: () -> Unit = {

@@ -2,6 +2,7 @@ package com.automacorp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -29,22 +30,50 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.automacorp.model.RoomDto
+import com.automacorp.service.ApiServices
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import com.automacorp.ui.theme.AutomacorpTheme
-
 
 class MainActivity : ComponentActivity() {
     companion object {
         const val ROOM_PARAM = "com.automacorp.room.attribute"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Action to do when the button is clicked
-        val onSayHelloButtonClick: (name: String) -> Unit = { name ->
-            val intent = Intent(this, RoomActivity::class.java).apply {
-                putExtra(ROOM_PARAM, name)
+        val onSayHelloButtonClick: (id: String) -> Unit = { idString ->
+            val roomId = idString.toLongOrNull() // Convert the input to Long
+            if (roomId != null) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    try {
+                        Log.d("MainActivity", "Searching for room with ID: $roomId")
+                        val response = ApiServices.roomsApiService.findById(roomId).execute()
+                        if (response.isSuccessful) {
+                            val room: RoomDto? = response.body()
+                            room?.let {
+                                val intent = Intent(this@MainActivity, RoomActivity::class.java).apply {
+                                    putExtra(ROOM_PARAM, it.id)
+                                }
+                                startActivity(intent)
+                            } ?: run {
+                                showToast("Room not found")
+                            }
+                        } else {
+                            showToast("Error: ${response.code()} ${response.message()}")
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        showToast("Error fetching room: ${e.message}")
+                    }
+                }
+            } else {
+                showToast("Invalid Room ID")
             }
-            startActivity(intent)
         }
 
         setContent {
@@ -58,7 +87,14 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun showToast(message: String) {
+        runOnUiThread {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
+    }
 }
+
 @Composable
 fun AppLogo(modifier: Modifier) {
     Image(
@@ -69,8 +105,7 @@ fun AppLogo(modifier: Modifier) {
 }
 
 @Composable
-fun Greeting(onClick: (name: String) -> Unit, modifier: Modifier = Modifier) {
-
+fun Greeting(onClick: (id: String) -> Unit, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxWidth()) {
         AppLogo(Modifier.padding(top = 32.dp).fillMaxWidth())
         Text(
@@ -81,17 +116,17 @@ fun Greeting(onClick: (name: String) -> Unit, modifier: Modifier = Modifier) {
                 .align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center
         )
-        var name by remember { mutableStateOf("") }
+        var id by remember { mutableStateOf("") }
         OutlinedTextField(
-            name,
-            onValueChange = { name = it },
+            id,
+            onValueChange = { id = it },
             modifier = Modifier.padding(24.dp).fillMaxWidth(),
             placeholder = {
-                Text(stringResource(R.string.act_main_fill_name))
+                Text(stringResource(R.string.act_main_fill_name)) // Update placeholder to indicate ID input
             })
 
         Button(
-            onClick = { onClick(name) },
+            onClick = { onClick(id) },
             modifier = Modifier.padding(8.dp).align(Alignment.CenterHorizontally)
         ) {
             Text(stringResource(R.string.act_main_open))
@@ -100,9 +135,9 @@ fun Greeting(onClick: (name: String) -> Unit, modifier: Modifier = Modifier) {
 }
 
 //@Preview(showBackground = true)
-////@Composable
-////fun GreetingPreview() {
-////    AutomacorpTheme {
-////        Greeting("Android")
-////    }
-////}
+//@Composable
+//fun GreetingPreview() {
+//    AutomacorpTheme {
+//        Greeting("Android")
+//    }
+//}
