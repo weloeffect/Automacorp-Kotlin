@@ -45,9 +45,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Action to do when the button is clicked
+
         val onSayHelloButtonClick: (id: String) -> Unit = { idString ->
-            val roomId = idString.toLongOrNull() // Convert the input to Long
+            val roomId = idString.toLongOrNull()
             if (roomId != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     try {

@@ -32,33 +32,33 @@ object RoomService {
         )
     }
 
-    // Create 50 rooms
+
     val ROOMS = (1..50).map { generateRoom(it.toLong()) }.toMutableList()
 
     fun findAll(): List<RoomDto> {
-        // Return all rooms sorted by name
+
         return ROOMS.sortedBy { it.name }
     }
 
     fun findById(id: Long): RoomDto? {
-        // Return the room with the given id or null
+
         return ROOMS.find { it.id == id }
     }
 
     fun findByName(name: String): RoomDto? {
-        // Return the room with the given name or null
+
         return ROOMS.find { it.name == name }
     }
 
     fun updateRoom(id: Long, room: RoomDto): RoomDto {
-        // Update an existing room with the given values
+
         val index = ROOMS.indexOfFirst { it.id == id }
         return if (index != -1) {
-            // Replace the existing room with the updated room
+
             ROOMS[index] = room
             room
         } else {
-            // If no room found with the given id, add it as a new room
+
             ROOMS.add(room)
             room
         }

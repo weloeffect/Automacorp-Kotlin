@@ -50,7 +50,7 @@ class RoomListActivity : ComponentActivity() {
                     topBar = { AutomacorpTopAppBar("Rooms", { finish() }) }
                 ) { innerPadding ->
                     if (roomsState.error != null) {
-                        // Show error state
+
                         Column(
                             modifier = Modifier
                                 .fillMaxSize()
@@ -66,7 +66,7 @@ class RoomListActivity : ComponentActivity() {
                             )
                         }
                     } else {
-                        // Show room list
+
                         RoomList(
                             rooms = roomsState.rooms,
                             navigateBack = { finish() },

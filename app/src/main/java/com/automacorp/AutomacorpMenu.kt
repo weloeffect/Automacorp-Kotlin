@@ -36,7 +36,7 @@ fun AutomacorpTopAppBar(title: String? = null, returnAction: () -> Unit = {}) {
         containerColor = MaterialTheme.colorScheme.primaryContainer,
         titleContentColor = MaterialTheme.colorScheme.primary,
     )
-    // Define the actions displayed on the right side of the app bar
+
     val actions: @Composable RowScope.() -> Unit = {
         IconButton(onClick = {
             RoomListActivity.start(context)
@@ -71,7 +71,7 @@ fun AutomacorpTopAppBar(title: String? = null, returnAction: () -> Unit = {}) {
             )
         }
     }
-    // Display the app bar with the title if present and actions
+
     if(title == null) {
         TopAppBar(
             title = { Text("") },
@@ -82,8 +82,7 @@ fun AutomacorpTopAppBar(title: String? = null, returnAction: () -> Unit = {}) {
         MediumTopAppBar(
             title = { Text(title) },
             colors = colors,
-            // The title will be displayed in other screen than the main screen.
-            // In this case we need to add a return action
+
             navigationIcon = {
                 IconButton(onClick = returnAction) {
                     Icon(

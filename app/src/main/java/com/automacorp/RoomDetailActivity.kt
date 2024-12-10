@@ -87,7 +87,7 @@ class RoomDetailActivity : ComponentActivity() {
     companion object {
         fun start(context: Context, roomId: Long) {
             val intent = Intent(context, RoomDetailActivity::class.java).apply {
-                putExtra("room_id", roomId)  // Add room ID to intent
+                putExtra("room_id", roomId)
             }
             context.startActivity(intent)
         }
@@ -107,13 +107,13 @@ fun RoomDetail(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Room Name
+
         Text(
             text = "Room: ${room.name}",
             style = MaterialTheme.typography.headlineMedium
         )
 
-        // Current Temperature
+
         Card(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -140,7 +140,7 @@ fun RoomDetail(
             }
         }
 
-        // Target Temperature
+
         Card(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -170,7 +170,7 @@ fun RoomDetail(
             }
         }
 
-        // Windows Section
+
         Card(
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -186,9 +186,9 @@ fun RoomDetail(
                 )
                 room.windows.forEach { window ->
                     Text(
-                        text = window.name,  // Display only the window name
+                        text = window.name,
                         style = MaterialTheme.typography.bodyMedium,
-                        modifier = Modifier.padding(vertical = 4.dp)  // Add some spacing
+                        modifier = Modifier.padding(vertical = 4.dp)
                     )
                 }
             }

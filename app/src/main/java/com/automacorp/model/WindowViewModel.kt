@@ -40,7 +40,7 @@ class WindowViewModel : ViewModel() {
                 if (!response.isSuccessful) {
                     windowsState.value = WindowList(windowsState.value.windows, "Error: ${response.code()} ${response.message()}")
                 } else {
-                    // Refresh the windows list after successful update
+
                     findWindowsByRoomId(window.roomId)
                 }
             } catch (e: Exception) {

@@ -30,19 +30,19 @@ class CreateRoomDialog(
     }
 
     private fun setupViews() {
-        // Find views
+
         val nameInput = findViewById<EditText>(R.id.dialog_room_name_input)
         val tempInput = findViewById<EditText>(R.id.dialog_room_temp_input)
         val createButton = findViewById<Button>(R.id.dialog_create_button)
         val cancelButton = findViewById<Button>(R.id.dialog_cancel_button)
 
-        // Set hints and text from resources
+
         nameInput.hint = context.getString(R.string.dialog_room_name_hint)
         tempInput.hint = context.getString(R.string.dialog_room_temp_hint)
         createButton.text = context.getString(R.string.dialog_button_create)
         cancelButton.text = context.getString(R.string.dialog_button_cancel)
 
-        // Set click listeners
+
         createButton.setOnClickListener {
             handleCreateButtonClick(nameInput.text.toString(), tempInput.text.toString())
         }

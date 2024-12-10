@@ -140,7 +140,7 @@ class RoomActivity : ComponentActivity() {
             )
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Current Temperature
+
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
@@ -159,7 +159,7 @@ class RoomActivity : ComponentActivity() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Target Temperature
+
             Text(
                 text = stringResource(R.string.act_room_target_temperature),
                 style = MaterialTheme.typography.bodyMedium
@@ -185,7 +185,7 @@ class RoomActivity : ComponentActivity() {
                 style = MaterialTheme.typography.bodyLarge
             )
 
-            // Windows Section
+
             if (room.windows.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
