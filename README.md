@@ -15,7 +15,7 @@ Automacorp kotlin project for mobile programming assignment
 2. move to project directory:
 
  ```bash
-   cd Automacorp
+   cd Automacorp-Kotlin
    ```
 3. Run on Android studio.
 
