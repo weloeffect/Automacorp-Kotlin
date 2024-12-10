@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
             if (roomId != null) {
                 CoroutineScope(Dispatchers.IO).launch {
                     try {
-                        Log.d("MainActivity", "Searching for room with ID: $roomId")
+
                         val response = ApiServices.roomsApiService.findById(roomId).execute()
                         if (response.isSuccessful) {
                             val room: RoomDto? = response.body()

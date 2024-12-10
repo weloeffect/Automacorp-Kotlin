@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.automacorp.model.RoomDto
 import com.automacorp.model.RoomViewModel
@@ -228,36 +229,16 @@ class RoomActivity : ComponentActivity() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(window.name)
-            Switch(
-                checked = window.windowStatus == WindowStatus.OPENED,
-                onCheckedChange = { isChecked ->
-                    onStatusChange(if (isChecked) WindowStatus.OPENED else WindowStatus.CLOSED)
-                }
-            )
+
         }
     }
 
-//@Composable
-//fun RoomUpdateButton(onClick: () -> Unit) {
-//    ExtendedFloatingActionButton(
-////        onClick = { onClick() }
-////        icon = {
-////            Icon(
-////                Icons.Filled.Done,
-////                contentDescription = stringResource(R.string.act_room_save),
-////            )
-////        },
-////        text = { Text(text = stringResource(R.string.act_room_save)) }
-//    )
-//}
 
-//@Preview(showBackground = true)
-//@Composable
-//fun RoomDetailPreview() {
-//    AutomacorpTheme {
-//        RoomDetail("Android")
-//    }
-//}
-//}
+
+@Preview(showBackground = true)
+@Composable
+fun RoomDetailPreview() {
 
 }
+}
+
