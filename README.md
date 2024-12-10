@@ -1,4 +1,4 @@
-### Automacorp Kotlin Project
+## Automacorp Kotlin Project
 Automacorp kotlin project for mobile programming assignment
 ## Getting Started
 
